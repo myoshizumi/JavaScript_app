@@ -88,59 +88,69 @@ message.style.backgroundColor = "#37383d"
 message.style.width = "120%";
 
 
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  if (!clicked) return;
+
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+  clicked.classList.add('operations__tab--active');
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+});
 
 
 
 
-
-
-
-
-
-// console.log(getComputedStyle(message).height);
-
-// message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 40 + "px";
-
-// document.documentElement.style.setProperty('--color-primary', 'orangered')
-
-// const logo = document.querySelector('.nav__logo');
-// console.log(logo.alt);
-// console.log(logo.src);
-// console.log(logo.className);
-
-// logo.alt = "Beautiful minimalist logo"
-// logo.setAttribute('company', "Bankist")
-// console.log(logo.getAttribute('src'));
-// const link = document.querySelector('.nav__link--btn');
-// console.log(link.href);
-// console.log(link.getAttribute("href"));
-
-// console.log(logo.dataset.versionNumber);
-
-// logo.classList.add("c", "j");
-// logo.classList.remove("c", "j");
-// logo.classList.toggle("c");
-// logo.classList.contains("c");
-// logo.className = "jonas";
 
 const h1 = document.querySelector('h1');
+// 
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// 
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'orangered';
+// 
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+// 
+// h1.closest('.header').style.background = "var(--gradient-secondary)";
+// 
+// h1.closest('h1').style.background = "var(--gradient-primary)";
+// 
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
+// 
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
+// 
+// console.log(h1.parentElement.children);
+// [...h1.parentElement.children].forEach(function (el) {
+// if (el !== h1) el.style.transform = "scale(0.5)";
+// });
+// const h1 = document.querySelector('h1');
 
-const alertH1 = function (e) {
-  alert('addEventlistener: Great! You are reading the heading');
+// const alertH1 = function (e) {
+// alert('addEventlistener: Great! You are reading the heading');
 
-  // h1.removeEventListener('mouseenter', alertH1);
-}
+// h1.removeEventListener('mouseenter', alertH1);
+// }
 
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
 
-setTimeout(() => h1.removeEventListener('mouseenter',
-  alertH1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter',
+// alertH1), 3000);
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// const randomInt = (min, max) =>
+// Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+// `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
 // document.querySelector('.nav__link').addEventListener('click', function (e) {
 // this.style.backgroundColor = randomColor()
