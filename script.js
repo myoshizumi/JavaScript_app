@@ -70,26 +70,26 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-const header = document.querySelector(".header");
-const message = document.createElement("div");
-message.classList.add('cookie-message');
-message.innerHTML =
-  'We use cookie for improved functionality and analitics. <button class="btn btn--close-cookie" >Got it!</button>';
+// const header = document.querySelector(".header");
+// const message = document.createElement("div");
+// message.classList.add('cookie-message');
+// message.innerHTML =
+// 'We use cookie for improved functionality and analitics. <button class="btn btn--close-cookie" >Got it!</button>';
 // header.prepend(message)
-header.append(message)
+// header.append(message)
 // header.append(message.cloneNode(true))
 // header.before(message);
 // header.after(message)
 
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    // message.remove();
-    message.parentElement.removeChild(message);
-  });
+// document
+// .querySelector('.btn--close-cookie')
+// .addEventListener('click', function () {
+// message.remove();
+// message.parentElement.removeChild(message);
+// });
 
-message.style.backgroundColor = "#37383d"
-message.style.width = "120%";
+// message.style.backgroundColor = "#37383d"
+// message.style.width = "120%";
 
 
 tabsContainer.addEventListener('click', function (e) {
@@ -117,12 +117,56 @@ const handleHover = function (e) {
   }
 }
 
+// nav.addEventListener('mouseover', handleHover.bind(0.5));
+// nav.addEventListener('mouseout', handleHover.bind(1));
 
-nav.addEventListener('mouseover', handleHover.bind(0.5));
-nav.addEventListener('mouseout', handleHover.bind(1));
+// const initialCoords = section1.getBoundingClientRect()
 
 
-const h1 = document.querySelector('h1');
+// window.addEventListener('scroll', function () {
+// console.log(window.scrollY);
+
+// if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+// else nav.classList.remove('sticky');
+// });
+
+// const obsCallback = function (entries, observer) {
+// entries.forEach(entry => {
+// console.log(entry);
+// })
+// };
+// const obsOptions = {
+// root: null,
+// threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+
+headerObserver.observe(header);
+
+
+
+// const h1 = document.querySelector('h1');
 // 
 // console.log(h1.querySelectorAll('.highlight'));
 // console.log(h1.childNodes);
